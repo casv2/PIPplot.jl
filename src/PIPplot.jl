@@ -62,7 +62,7 @@ function PIPenergyplot(test_data, IP, s; e_data = 1, returnplot = true)
             test = convert(Array{Float64,1}, unfold(e_data[2,findmin(indices)[1]:findmax(indices)[1]]))/54
             data = transpose(numpy.array([target, test], numpy.float64))
             thin_data, thin_weights = plottools.thin_points(data, r=0.001)
-            p = scatter!(p, thin_data[:,1], thin_data[:,2], markersize=4*(thin_weights).^(0.5), markeralpha=0.2, label=config, legend=:bottomright, xlabel="Target Energy per atom (eV) RMSE = "*string(RMSE_E)[1:8], ylabel="Predicted Energy per atom (eV)", legendfont=7, color=colors[i])  ##yaxis = (:log10, (1,100000)), markerstrokealpha=1, markerstrokecolor="black",
+            p = scatter!(p, thin_data[:,1], thin_data[:,2], markersize=4*(thin_weights).^(0.5), markeralpha=0.1, label=config, legend=:bottomright, xlabel="Target Energy per atom (eV) RMSE = "*string(RMSE_E)[1:8], ylabel="Predicted Energy per atom (eV)", legendfont=7, color=colors[i])  ##yaxis = (:log10, (1,100000)), markerstrokealpha=1, markerstrokecolor="black",
         end
         return p
     else
@@ -92,7 +92,7 @@ function PIPforceplot(test_data, IP, s; f_data = 1, returnplot=true)
             test = convert(Array{Float64,1}, unfold(f_data[2,findmin(indices)[1]:findmax(indices)[1]]))
             data = transpose(numpy.array([test, target], numpy.float64))
             thin_data, thin_weights = plottools.thin_points(data, r=0.02)
-            p = scatter!(p, thin_data[:,1], thin_data[:,2], markersize=4*(thin_weights).^(0.5), markeralpha=0.2, label=config, legend=:bottomright, xlabel="Target Force (ev/Å) RMSE = "*string(RMSE_F)[1:8], ylabel="Predicted Force (ev/Å)", legendfont=7, color=colors[i], legend=:false)  ##markerstrokealpha=1, markerstrokecolor="black",
+            p = scatter!(p, thin_data[:,1], thin_data[:,2], markersize=4*(thin_weights).^(0.5), markeralpha=0.1, label=config, legend=:bottomright, xlabel="Target Force (ev/Å) RMSE = "*string(RMSE_F)[1:8], ylabel="Predicted Force (ev/Å)", legendfont=7, color=colors[i], legend=:false)  ##markerstrokealpha=1, markerstrokecolor="black",
         end
         return p
     else
@@ -151,7 +151,7 @@ function PIPforceplot2(test_data, IP, s; f_data = 1, returnplot=true)
             error = abs.(test-target)
             data = transpose(numpy.array([target, error], numpy.float64))
             thin_data, thin_weights = plottools.thin_points(data, r=0.02)
-            p = scatter!(p, thin_data[:,1], thin_data[:,2]+1e-10, markersize=4*(thin_weights).^(0.5), markeralpha=0.2, label=config, legend=:bottomright, xlabel="Target Force (ev/Å) RMSE = "*string(RMSE_F)[1:8], ylabel="| Predicted Force Error | (ev/Å)", yaxis = (:log10, (0.00005,2)), legendfont=7, color=colors[i], legend=:false)  ##markerstrokealpha=1, markerstrokecolor="black",
+            p = scatter!(p, thin_data[:,1], thin_data[:,2]+1e-10, markersize=4*(thin_weights).^(0.5), markeralpha=0.1, label=config, legend=:bottomright, xlabel="Target Force (ev/Å) RMSE = "*string(RMSE_F)[1:8], ylabel="| Predicted Force Error | (ev/Å)", yaxis = (:log10, (0.00005,2)), legendfont=7, color=colors[i], legend=:false)  ##markerstrokealpha=1, markerstrokecolor="black",
         end
         return p
     else
@@ -178,7 +178,7 @@ function PIPenergyplot2(test_data, IP, s; e_data = 1, returnplot = true)
             error = abs.(test-target)
             data = transpose(numpy.array([target, error], numpy.float64))
             thin_data, thin_weights = plottools.thin_points(data, r=0.01)
-            p = scatter!(p, thin_data[:,1], thin_data[:,2]+1e-10, markersize=4*(thin_weights).^(0.5), markeralpha=0.2, label=config, legend=:bottomright, xlabel="Target Energy per atom (eV) RMSE = "*string(RMSE_E)[1:8], yaxis = (:log10, (0.00005,0.04)), ylabel="Predicted Energy per atom (eV)", legendfont=7, color=colors[i], legend=:false)  ##yaxis = (:log10, (1,100000)), markerstrokealpha=1, markerstrokecolor="black",
+            p = scatter!(p, thin_data[:,1], thin_data[:,2]+1e-10, markersize=4*(thin_weights).^(0.5), markeralpha=0.1, label=config, legend=:bottomright, xlabel="Target Energy per atom (eV) RMSE = "*string(RMSE_E)[1:8], yaxis = (:log10, (0.00005,0.04)), ylabel="Predicted Energy per atom (eV)", legendfont=7, color=colors[i], legend=:false)  ##yaxis = (:log10, (1,100000)), markerstrokealpha=1, markerstrokecolor="black",
         end
         return p
     else
